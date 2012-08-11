@@ -45,7 +45,7 @@ sub paintEvent {
 }
 
 sub scale {
-    return 100000;
+    return 10000;
 }
 
 our $valid_row_regex = qr/
@@ -82,10 +82,33 @@ sub handleInput {
             my $chan1_avg = this->{chan1_sum} / $samples;
             my $chan2_avg = this->{chan2_sum} / $samples;
 
-            my $new_x = ( this->scale() * ( $chan_1 - $chan1_avg ) );
-            my $new_y = ( this->scale() * ( $chan_2 - $chan2_avg ) );
-            this->{_x} += $new_x;
-            this->{_y} += $new_y;
+            # my $new_x = ( this->scale() * ( $chan_1 - $chan1_avg ) );
+            # my $new_y = ( this->scale() * ( $chan_2 - $chan2_avg ) );
+            # this->{_x} += $new_x;
+            # this->{_y} += $new_y;
+            my $chan1_scale = 1.1;
+            my $chan2_scale = 1;
+            my $chan_1_2_avg = (($chan1_avg * $chan1_scale +
+                $chan2_avg * $chan2_scale) / 2.0) || 1;
+            my $delta_x = ($chan_1 * $chan1_scale - $chan_2 * $chan2_scale) /
+                $chan_1_2_avg * 1;
+            my $x_deadzone = 0.5;
+            if ($delta_x > $x_deadzone) {
+                this->{_x} += $delta_x - $x_deadzone;
+            }
+            if ($delta_x < -$x_deadzone) {
+                this->{_x} += $delta_x - -$x_deadzone;
+            }
+#            my $chan1_scaled = $chan_1 * this->scale();
+#            my $chan2_scaled = $chan_2 * this->scale() * 1.2;
+#            my $chan1_thresh = 0;
+#            my $chan2_thresh = 0;
+#            if ( $chan1_scaled > $chan1_thresh ) {
+#                this->{_x} += $chan1_scaled - $chan1_thresh;
+#            }
+#            if ( $chan2_scaled > $chan2_thresh ) {
+#                this->{_x} -= $chan2_scaled - $chan2_thresh;
+#            }
 
             my $size = this->size();
             if ( this->{_x} < 0 ) {
