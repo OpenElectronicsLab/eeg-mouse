@@ -38,18 +38,18 @@
       width: 700px;
       margin-left: auto;
       margin-right: auto;
-      font-size: 0.9em; 
-      font-style: italic; 
+      font-size: 0.9em;
+      font-style: italic;
       margin-top: 1em;
       margin-bottom: 1em;
       }
     p.prog {
-      text-indent: -4.5em; 
+      text-indent: -4.5em;
       padding-left: 4.5em;
       }
     }
   </style>
-  
+
 </head>
 
 <body>
@@ -79,7 +79,7 @@ This has potential application for adaptive equipment.
     </div>
     <!-- div id = "about" -->
     <h2>About the eeg-mouse project</h2>
-    
+
     <h3> Project goals </h3>
     The main goal of the project is to build a device that allows use of electrophysiologic signals to control a computer pointing device. In addition:
     <ul>
@@ -94,14 +94,14 @@ This has potential application for adaptive equipment.
     <h4> Current Hardware </h4>
     <p>The Rev1 design integrates an Arduino Due compatible microcontroller, 5kV of reinforced isolation (for safety), and an ADS1299 analog front end for capturing EEG signals.  We use standard disposable EEG electrodes (both single use self-adhesive electrodes and non-adhesive electrodes that can be used multiple times). </p>
     <ul>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master    /kicad-files/rev1/arduino-ads129x.brd">arduino-ads129x</a>: USB, Atmel SAM3X (ARM Cortex M3 microcrontroller), isolation, TI ADS1299 (8-Channel 24-Bit analog front-end)</li>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master    /kicad-files/rev1/patch-shield-analog.brd">patch-shield-analog</a>: analog signal routing for DIN 42-802 touch-proof connectors</li>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master    /kicad-files/rev1/patch-shield-digital.brd">patch-shield-digital</a>: LEDs for lead-off detection display and signal in use. Also provides physical support for the touch-proof connector sockets.</li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/kicad-files/rev1/arduino-ads129x.brd">arduino-ads129x</a>: USB, Atmel SAM3X (ARM Cortex M3 microcrontroller), isolation, TI ADS1299 (8-Channel 24-Bit analog front-end)</li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/kicad-files/rev1/patch-shield-analog.brd">patch-shield-analog</a>: analog signal routing for DIN 42-802 touch-proof connectors</li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/kicad-files/rev1/patch-shield-digital.brd">patch-shield-digital</a>: LEDs for lead-off detection display and signal in use. Also provides physical support for the touch-proof connector sockets.</li>
     <li>Custom-built sheilded cables from <a href="http://www.easycap.de/easycap/">EasyCap.de</a>, with  standard snap connectors for the electrodes, and DIN 42-802 (<q>touchproof safety socket</q>) connectors to go to the board. We suspect that unshielded cables are OK too, but we don't know for sure.</li>
     <li>Disposable sintered silver Ag/AgCl electrodes with snap connectors from <a href="http://www.medcat.nl/">MedCaT.nl</a>. When they start to look shiny instead of the matte black of the silver chloride, we re-chloride them by soaking overnight in plain household bleach (<q>thin bleach</q>).</li>
     <li><q>Ten20</q> conductive paste from MedCaT.</li>
     <li>adhesive electrodes<!-- link? --></li>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master    /scad-files/rev1_case_v1.scad">laser cut acrylic case</a></li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/scad-files/rev1_case_v1.scad">laser cut acrylic case</a></li>
     </ul>
     <h4> Current Software </h4>
     <ul>
@@ -113,7 +113,7 @@ This has potential application for adaptive equipment.
     <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/src/freq-split-smooth.pl">freq-split-smooth.pl</a>: splits the signal into three parts, alpha activity (7-14 Hz), beta (20-26 Hz), and "baseline" (16.5-17.5 Hz)</li>
     <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/src/window.pl">window.pl</a>: a GUI for moving a pointer around the screen driven by the input from the EEG.</li>
     </ul>
-   <!-- 
+   <!--
     <h3> Progress and Milestones </h3>
     <p class=prog>
     <em>Nov 2011</em>  The idea for the eeg-mouse was hatched.
@@ -130,7 +130,7 @@ This has potential application for adaptive equipment.
     </p>
     -->
     <!-- /div --><!--about-->
-    
+
 
 
       <h2>Software License</h2>
@@ -182,12 +182,12 @@ This has potential application for adaptive equipment.
     <pre>$ git clone git://github.com/openelectronicslab/eeg-mouse</pre>
     <p></p>
 
-    
+
     <div class="footer">
       get the source code on GitHub :
       <a href="https://github.com/openelectronicslab/eeg-mouse">openelectronicslab/eeg-mouse</a>
     </div><!--footer-->
-    
+
   </div><!--container-->
 
 </body>
