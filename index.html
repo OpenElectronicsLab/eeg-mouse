@@ -3,25 +3,26 @@
 <head>
   <meta charset='utf-8'>
 
-  <title>ericherman/eeg-mouse @ GitHub</title>
+  <title>openelectronicslab/eeg-mouse @ GitHub</title>
 
   <style type="text/css">
     body {
       margin-top: 1.0em;
-      background-color: #979970;
+      background-color: #E6E6E6;
       font-family: Helvetica, Arial, FreeSans, san-serif;
       color: #000000;
     }
     #container {
       margin: 0 auto;
-      width: 700px;
+      width: 800px;
     }
-    h1 { font-size: 3.8em; color: #68668f; margin-bottom: 3px; }
+    h1 { font-size: 3.8em; color: #01265A; margin-bottom: 3px; }
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #68668f; }
-    h3 { text-align: center; color: #68668f; }
-    a { color: #68668f; }
+    h2 { font-size: 1.5em; color: #01265A; }
+    h3 { text-align: center; color: #01265A; }
+    a { color: #01265A; }
+    a:visited { color: #422959; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px;
         font-style: italic; }
     .download { float: right; }
@@ -30,11 +31,29 @@
     img { border: 0; }
     p .small { font-size: 0.75em; }
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+    #about {
+      border: 3px #D3D0E3 solid;
+      }
+    div.wideimg {
+      width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 0.9em; 
+      font-style: italic; 
+      margin-top: 1em;
+      margin-bottom: 1em;
+      }
+    p.prog {
+      text-indent: -4.5em; 
+      padding-left: 4.5em;
+      }
+    }
   </style>
+  
 </head>
 
 <body>
-  <a href="https://github.com/ericherman/eeg-mouse"><img
+  <a href="https://github.com/openelectronicslab/eeg-mouse"><img
   style="position: absolute; top: 0; right: 0; border: 0;"
   src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
   alt="Fork me on GitHub" /></a>
@@ -42,22 +61,76 @@
   <div id="container">
 
     <div class="download">
-      <a href="https://github.com/ericherman/eeg-mouse/zipball/master"><img
+      <a href="https://github.com/openelectronicslab/eeg-mouse/zipball/master"><img
              width="90"
              src="https://github.com/images/modules/download/zip.png"
              alt="zipball"></a>
-      <a href="https://github.com/ericherman/eeg-mouse/tarball/master"><img
+      <a href="https://github.com/openelectronicslab/eeg-mouse/tarball/master"><img
              width="90"
              src="https://github.com/images/modules/download/tar.png"
              alt="tarball"></a>
     </div>
 
-    <h1><a href="https://github.com/ericherman/eeg-mouse">eeg-mouse</a></h1>
+    <h1><a href="https://github.com/openelectronicslab/eeg-mouse">eeg-mouse</a></h1>
 
-    <div class="description">
+    <div class="description" >
 The eeg-mouse is a project to attempt to control a mouse with eeg signals.
 This has potential application for adaptive equipment.
     </div>
+    <!-- div id = "about" -->
+    <h2>About the eeg-mouse project</h2>
+    
+    <h3> Project goals </h3>
+    The main goal of the project is to build a device that allows use of electrophysiologic signals to control a computer pointing device. In addition:
+    <ul>
+    <li>Hardware and software that we develop will have a free/open source license. We also prefer to use hardware and software that are free/open source.</li>
+    <li>We would like to keep the hardware <q>DIY compatible</q> (hand solderable, with parts that are readily available in small quantities, etc.)</li>
+    <li>In the end the mouse should be usable with a headband that does not require conductive gel. For prototyping, we'll use skin electrodes with conductive gel (not needle electrodes).</li>
+    <li>For us, this is a hobby and learning project. It's important to keep it fun, and take the time to learn along the way.</li>
+    </ul>
+
+    <h3> Current Status as of May 2014 </h3>
+    <p> We are able to record EEG signals and extract alpha and beta activity, and use these to control a cursor in two dimensions.  Our tests allow the mouse to be moved with an average distance to target of under 50 pixels, although there is a considerable amount of instability in our control; we hope to improve this. <!-- add video link --></p>
+    <h4> Current Hardware </h4>
+    <p>The Rev1 design integrates an Arduino Due compatible microcontroller, 5kV of reinforced isolation (for safety), and an ADS1299 analog front end for capturing EEG signals.  We use standard disposable EEG electrodes (both single use self-adhesive electrodes and non-adhesive electrodes that can be used multiple times). </p>
+    <ul>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master    /kicad-files/rev1/arduino-ads129x.brd">arduino-ads129x</a>: USB, Atmel SAM3X (ARM Cortex M3 microcrontroller), isolation, TI ADS1299 (8-Channel 24-Bit analog front-end)</li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master    /kicad-files/rev1/patch-shield-analog.brd">patch-shield-analog</a>: analog signal routing for DIN 42-802 touch-proof connectors</li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master    /kicad-files/rev1/patch-shield-digital.brd">patch-shield-digital</a>: LEDs for lead-off detection display and signal in use. Also provides physical support for the touch-proof connector sockets.</li>
+    <li>Custom-built sheilded cables from <a href="http://www.easycap.de/easycap/">EasyCap.de</a>, with  standard snap connectors for the electrodes, and DIN 42-802 (<q>touchproof safety socket</q>) connectors to go to the board. We suspect that unshielded cables are OK too, but we don't know for sure.</li>
+    <li>Disposable sintered silver Ag/AgCl electrodes with snap connectors from <a href="http://www.medcat.nl/">MedCaT.nl</a>. When they start to look shiny instead of the matte black of the silver chloride, we re-chloride them by soaking overnight in plain household bleach (<q>thin bleach</q>).</li>
+    <li><q>Ten20</q> conductive paste from MedCaT.</li>
+    <li>adhesive electrodes<!-- link? --></li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master    /scad-files/rev1_case_v1.scad">laser cut acrylic case</a></li>
+    </ul>
+    <h4> Current Software </h4>
+    <ul>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/arduino-src">firmware for the Arduino</a>: Initializes the ADS chip and sends the signals from the chip to the computer via the USB port, in frames and in hex format.
+    </li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/src/serial-reader.pl">serial-reader.pl</a>: Reads the data from the Arduino, outputs the raw hex frames to standard out. <!-- <pre>[example]</pre> --> </li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/src/frame-parser.pl">frame-parser.pl</a>: Reads the raw hex frames and converts them to comma delimited output. The format of the output is: the letter &#39;C&#39; (magic), lead-off status Positive, lead-off status Negative, status GPIO1 to GPIO4, signal from channels 1 to 8 in volts. <!-- <pre>[example]</pre> --></li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/src/chan1-filter.pl">chan1-filter.pl</a>: just passes the information from the first channel to the next stage.</li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/src/freq-split-smooth.pl">freq-split-smooth.pl</a>: splits the signal into three parts, alpha activity (7-14 Hz), beta (20-26 Hz), and "baseline" (16.5-17.5 Hz)</li>
+    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/src/window.pl">window.pl</a>: a GUI for moving a pointer around the screen driven by the input from the EEG.</li>
+    </ul>
+   <!-- 
+    <h3> Progress and Milestones </h3>
+    <p class=prog>
+    <em>Nov 2011</em>  The idea for the eeg-mouse was hatched.
+    </p><p class=prog>
+    <em>Jan 2012</em>  Built our first prototype boards (rev0). We decided to make a simple breakout board for the <a href="http://www.ti.com/product/ads1298">ADS1298</a>, using all through-hole parts except the ADS itself (because, at the time, only one of us had done any surface mount soldering), connected to an Arduino Mega.
+    <div class=wideimg><img src = "rev0_mega.JPG" />
+    The rev0 board connected to the Arduino through <a href="https://github.com/OpenElectronicsLab/level-shifter">a 5V to 3.3V level shifter</a> built on a breadboard.</div>
+    For the EEG cables we used:
+    <ul>
+    </p><p class=prog>
+    <em>Feb 2012</em>  Building software:
+    </p>
+    <p class=prog>
+    </p>
+    -->
+    <!-- /div --><!--about-->
+    
 
 
       <h2>Software License</h2>
@@ -99,22 +172,23 @@ This has potential application for adaptive equipment.
     <h2>Download</h2>
     <p>
       You can download this project in either
-      <a href="https://github.com/ericherman/eeg-mouse/zipball/master">zip</a>
+      <a href="https://github.com/openelectronicslab/eeg-mouse/zipball/master">zip</a>
       or
-      <a href="https://github.com/ericherman/eeg-mouse/tarball/master"
+      <a href="https://github.com/openelectronicslab/eeg-mouse/tarball/master"
          >tar formats.</a>
     </p>
     <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
       by running:</p>
-    <pre>$ git clone git://github.com/ericherman/eeg-mouse</pre>
+    <pre>$ git clone git://github.com/openelectronicslab/eeg-mouse</pre>
     <p></p>
 
+    
     <div class="footer">
       get the source code on GitHub :
-      <a href="https://github.com/ericherman/eeg-mouse">ericherman/eeg-mouse</a>
-    </div>
-
-  </div>
+      <a href="https://github.com/openelectronicslab/eeg-mouse">openelectronicslab/eeg-mouse</a>
+    </div><!--footer-->
+    
+  </div><!--container-->
 
 </body>
 </html>
