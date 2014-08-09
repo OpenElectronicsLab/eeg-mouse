@@ -88,9 +88,6 @@ This has potential application for adaptive equipment.
     <li> Hardware and software that we develop will have a free/open source
     license. We also prefer to use hardware and software that are free/open
     source.</li>
-    <li> We would like to keep the hardware <q>DIY compatible</q> (hand
-    solderable, with parts that are readily available in small quantities,
-    etc.)</li>
     <li> In the end the mouse should be usable with a headband that does not
     require conductive gel. For prototyping, we'll use skin electrodes with
     conductive gel (not needle electrodes).</li>
@@ -99,17 +96,6 @@ This has potential application for adaptive equipment.
     </ul>
 
     <h3> Current Status as of August 2014 </h3>
-    <p> We are able to record ECG signals as a simple demo of the platform:</p>
-    <video controls>
-	<source
-         src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/videos/ECG-demo-ekh-2014-08-09T1147Z.webm"
-         type='video/webm; codecs="vp8.0, vorbis"'>
-	<source
-         src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/videos/ECG-demo-ekh-2014-08-09T1147Z.mp4"
-         type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'>
-	<p>example video</p>
-    </video>
-
     <p> We are able to record EEG signals and extract alpha and beta
     activity, and use these to control a cursor in two dimensions.  Our
     tests allow the mouse to be moved with an average distance to target of
@@ -127,49 +113,46 @@ This has potential application for adaptive equipment.
 	<p>example video</p>
     </video>
     <h4> Current Hardware </h4>
-    <p>The Rev1 design integrates an Arduino Due compatible
-    microcontroller, 5kV of reinforced isolation (for safety), and an
-    ADS1299 analog front end for capturing EEG signals. We use standard
-    disposable EEG electrodes (both single use self-adhesive electrodes
-    and non-adhesive electrodes that can be used multiple times). </p>
+    <p>The
+    <a href="http://openelectronicslab.github.io/OpenHardwareExG/">
+    OpenHardwareExG</a> platform integrates USB, an Arduino Due compatible
+    microcontroller Atmel SAM3X (ARM Cortex M3 microcrontroller),
+    5kV of reinforced isolation (for safety),
+    a TI ADS1299 8-Channel 24-Bit analog front-end for capturing EEG signals,
+    DIN 42-802 touch proof connectors sockets,
+    and LEDs for lead-off detection display and signal in use.</p>
     <img src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/images/OpenHardwareExG-rev1-in-case.800.jpg"/>
     <ul>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/kicad-files/rev1/arduino-ads129x.brd">arduino-ads129x</a>:
-    USB, Atmel SAM3X (ARM Cortex M3 microcrontroller), isolation, TI
-    ADS1299 (8-Channel 24-Bit analog front-end)</li>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/kicad-files/rev1/patch-shield-analog.brd">patch-shield-analog</a>:
-    analog signal routing for DIN 42-802 touch proof connectors</li>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/kicad-files/rev1/patch-shield-digital.brd">patch-shield-digital</a>:
-    LEDs for lead-off detection display and signal in use. Also provides
-    physical support for the touch proof connector sockets.</li>
     <li>Custom-built sheilded cables from
     <a href="http://www.easycap.de/easycap/">EasyCap.de</a>, with standard
     snap connectors for the electrodes, and DIN 42-802 (<q>touch proof
-    safety socket</q>) connectors to go to the board. We suspect that
-    unshielded cables are OK too, but we don't know for sure.</li>
-    <li>Disposable sintered silver Ag/AgCl electrodes with snap connectors
+    safety socket</q>) connectors to go to the board.</li>
+    <li>Or just off the shelf unshielded <a
+    href="http://www.amazon.com/Huhushop-TM-0-8m-Lead-Leads/dp/B00EB4CZFY/ref=sr_1_5?ie=UTF8&qid=1407596089&sr=8-5&keywords=eeg+electrodes">
+    ECG cables</a></li>
+    <li><q>Ten20</q> conductive paste and disposable sintered
+    silver Ag/AgCl electrodes with snap connectors
     from <a href="http://www.medcat.nl/">MedCaT.nl</a>. When they start to
     look shiny instead of the matte black of the silver chloride, we
     re-chloride them by soaking overnight in plain household bleach
-    (<q>thin bleach</q>).</li>
-    <li><q>Ten20</q> conductive paste from MedCaT.</li>
-    <li>adhesive electrodes<!-- link? --></li>
+    (<q>thin bleach</q>).
+    <li>Or just disposable
+    <a href="http://www.amazon.com/Vermed-SilveRest-Resting-Electrode-Vinyl/dp/B002C2KEXW/ref=sr_1_6?ie=UTF8&qid=1407596089&sr=8-6&keywords=eeg+electrodes">
+     adhesive electrodes</li>
     <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/scad-files/rev1_case_v1.scad">laser cut acrylic case</a></li>
     <li><a href="http://www.discountdisposables.com/tools-accessories/din-connectors-adapters/td-985xx-panel-mount-jacks.html">Touch-proof connectors</a></li>
     <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/kicad-files/rev1/fasteners.txt">fasteners</a></li>
     </ul>
-    <p>The rev1 main arduino-ads129x board:</p>
-    <img src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/images/OpenHardwareExG-rev1-soldered.800.jpg"/>
     <h4> Current Software </h4>
     <ul>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/arduino-src">firmware for the Arduino</a>:
+    <li><a href="https://github.com/OpenElectronicsLab/OpenHardwareExG/tree/master/OpenHardwareExG_firmware">firmware for the Arduino</a>:
     Initializes the ADS chip and sends the signals from the chip to the
     computer via the USB port, in frames and in hex format.
     </li>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/src/serial-reader.pl">serial-reader.pl</a>:
+    <li><a href="https://github.com/OpenElectronicsLab/OpenHardwareExG/blob/master/src/serial-reader.pl">serial-reader.pl</a>:
     Reads the data from the Arduino, outputs the raw hex frames to standard
     out. <!-- <pre>[example]</pre> --> </li>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/src/frame-parser.pl">frame-parser.pl</a>:
+    <li><a href="https://github.com/OpenElectronicsLab/OpenHardwareExG/blob/master/src/frame-parser.pl">frame-parser.pl</a>:
     Reads the raw hex frames and converts them to comma delimited output.
     The format of the output is: the letter &#39;C&#39; (magic), lead-off
     status Positive, lead-off status Negative, status GPIO1 to GPIO4,
