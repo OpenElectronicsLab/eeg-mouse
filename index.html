@@ -74,8 +74,12 @@
     <h1><a href="https://github.com/openelectronicslab/eeg-mouse">eeg-mouse</a></h1>
 
     <div class="description" >
-The eeg-mouse is a project to attempt to control a mouse with eeg signals.
-This has potential application for adaptive equipment.
+    <p>
+    The eeg-mouse is a project to attempt to control an on-screen pointer
+    using EEG signals.
+    </p><p>
+    This has potential application for adaptive equipment.
+    </p>
     </div>
     <!-- div id = "about" -->
     <h2>About the eeg-mouse project</h2>
@@ -86,8 +90,9 @@ This has potential application for adaptive equipment.
     In addition:
     <ul>
     <li> Hardware and software that we develop will have a free/open source
-    license. We also prefer to use hardware and software that are free/open
-    source.</li>
+    license.</li>
+    <li>We prefer to use hardware and software that are free/open
+    source for our development efforts.</li>
     <li> In the end the mouse should be usable with a headband that does not
     require conductive gel. For prototyping, we'll use skin electrodes with
     conductive gel (not needle electrodes).</li>
@@ -113,35 +118,33 @@ This has potential application for adaptive equipment.
 	<p>example video</p>
     </video>
     <h4> Current Hardware </h4>
-    <p>The
+    <img src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/images/OpenHardwareExG-rev1-in-case.800.jpg"/>
+    <ul>
+    <li>The
     <a href="http://openelectronicslab.github.io/OpenHardwareExG/">
-    OpenHardwareExG</a> platform integrates USB, an Arduino Due compatible
+    OpenHardwareExG</a> platform pictured above integrates USB,
+    an Arduino Due compatible
     microcontroller Atmel SAM3X (ARM Cortex M3 microcrontroller),
     5kV of reinforced isolation (for safety),
     a TI ADS1299 8-Channel 24-Bit analog front-end for capturing EEG signals,
-    DIN 42-802 touch proof connectors sockets,
-    and LEDs for lead-off detection display and signal in use.</p>
-    <img src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/images/OpenHardwareExG-rev1-in-case.800.jpg"/>
-    <ul>
+    DIN 42-802 touch proof connectors sockets, LEDs for lead-off detection
+    display and signal-in-use, all in a laser-cut acrylic case.
+    </li>
     <li>Custom-built sheilded cables from
     <a href="http://www.easycap.de/easycap/">EasyCap.de</a>, with standard
     snap connectors for the electrodes, and DIN 42-802 (<q>touch proof
-    safety socket</q>) connectors to go to the board.</li>
-    <li>Or just off the shelf unshielded <a
-    href="http://www.amazon.com/Huhushop-TM-0-8m-Lead-Leads/dp/B00EB4CZFY/ref=sr_1_5?ie=UTF8&qid=1407596089&sr=8-5&keywords=eeg+electrodes">
-    ECG cables</a></li>
+    safety socket</q>) connectors to go to the board. We suspect
+    off-the-shelf
+    <a href="http://www.amazon.com/Huhushop-TM-0-8m-Lead-Leads/dp/B00EB4CZFY/ref=sr_1_5?ie=UTF8&qid=1407596089&sr=8-5&keywords=eeg+electrodes">
+    unshielded ECG cables</a> should work, too.</li>
     <li><q>Ten20</q> conductive paste and disposable sintered
     silver Ag/AgCl electrodes with snap connectors
     from <a href="http://www.medcat.nl/">MedCaT.nl</a>. When they start to
     look shiny instead of the matte black of the silver chloride, we
     re-chloride them by soaking overnight in plain household bleach
-    (<q>thin bleach</q>).
-    <li>Or just disposable
+    (<q>thin bleach</q>). We have also used disposable
     <a href="http://www.amazon.com/Vermed-SilveRest-Resting-Electrode-Vinyl/dp/B002C2KEXW/ref=sr_1_6?ie=UTF8&qid=1407596089&sr=8-6&keywords=eeg+electrodes">
      adhesive electrodes</li>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/tree/master/scad-files/rev1_case_v1.scad">laser cut acrylic case</a></li>
-    <li><a href="http://www.discountdisposables.com/tools-accessories/din-connectors-adapters/td-985xx-panel-mount-jacks.html">Touch-proof connectors</a></li>
-    <li><a href="https://github.com/OpenElectronicsLab/eeg-mouse/blob/master/kicad-files/rev1/fasteners.txt">fasteners</a></li>
     </ul>
     <h4> Current Software </h4>
     <ul>
