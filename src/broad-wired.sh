@@ -1,11 +1,13 @@
 #!/bin/bash
 
+EXG="../OpenHardwareExG/src"
+
 SAMPLE=`date +"%Y%m%d.%H%M%S"`
 
 # tee >(./plot_frames.pl) |
 
-./serial-reader.pl |
-./frame-parser.pl |
+$EXG/serial-reader.pl |
+$EXG/frame-parser.pl |
 tee -a sample-${USER}-${SAMPLE}.csv |
 ./chan2-filter.pl |
 ./freq-broad-bandpass.pl |
